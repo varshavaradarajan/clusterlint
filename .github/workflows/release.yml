@@ -12,7 +12,7 @@ jobs:
       - name: Generate artifacts
         uses: skx/github-action-build@master
       - name: Upload artifacts
-        uses: varshavaradarajan/github-action-publish-binaries@master
+        uses: varshavaradarajan/github-action-publish-binaries@fix-http-status
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
