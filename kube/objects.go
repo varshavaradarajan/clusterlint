@@ -73,67 +73,67 @@ func (c *Client) FetchObjects(ctx context.Context) (*Objects, error) {
 	var g errgroup.Group
 
 	g.Go(func() (err error) {
-		objects.Nodes, err = client.Nodes().List(opts)
+		objects.Nodes, err = client.Nodes().List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.PersistentVolumes, err = client.PersistentVolumes().List(opts)
+		objects.PersistentVolumes, err = client.PersistentVolumes().List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.ComponentStatuses, err = client.ComponentStatuses().List(opts)
+		objects.ComponentStatuses, err = client.ComponentStatuses().List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.Pods, err = client.Pods(corev1.NamespaceAll).List(opts)
+		objects.Pods, err = client.Pods(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.PodTemplates, err = client.PodTemplates(corev1.NamespaceAll).List(opts)
+		objects.PodTemplates, err = client.PodTemplates(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.PersistentVolumeClaims, err = client.PersistentVolumeClaims(corev1.NamespaceAll).List(opts)
+		objects.PersistentVolumeClaims, err = client.PersistentVolumeClaims(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.ConfigMaps, err = client.ConfigMaps(corev1.NamespaceAll).List(opts)
+		objects.ConfigMaps, err = client.ConfigMaps(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.Secrets, err = client.Secrets(corev1.NamespaceAll).List(opts)
+		objects.Secrets, err = client.Secrets(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.Services, err = client.Services(corev1.NamespaceAll).List(opts)
+		objects.Services, err = client.Services(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.ServiceAccounts, err = client.ServiceAccounts(corev1.NamespaceAll).List(opts)
+		objects.ServiceAccounts, err = client.ServiceAccounts(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.ResourceQuotas, err = client.ResourceQuotas(corev1.NamespaceAll).List(opts)
+		objects.ResourceQuotas, err = client.ResourceQuotas(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.LimitRanges, err = client.LimitRanges(corev1.NamespaceAll).List(opts)
+		objects.LimitRanges, err = client.LimitRanges(corev1.NamespaceAll).List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.SystemNamespace, err = client.Namespaces().Get(metav1.NamespaceSystem, metav1.GetOptions{})
+		objects.SystemNamespace, err = client.Namespaces().Get(ctx, metav1.NamespaceSystem, metav1.GetOptions{})
 		return
 	})
 	g.Go(func() (err error) {
-		objects.MutatingWebhookConfigurations, err = admissionControllerClient.MutatingWebhookConfigurations().List(opts)
+		objects.MutatingWebhookConfigurations, err = admissionControllerClient.MutatingWebhookConfigurations().List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.ValidatingWebhookConfigurations, err = admissionControllerClient.ValidatingWebhookConfigurations().List(opts)
+		objects.ValidatingWebhookConfigurations, err = admissionControllerClient.ValidatingWebhookConfigurations().List(ctx, opts)
 		return
 	})
 	g.Go(func() (err error) {
-		objects.Namespaces, err = client.Namespaces().List(opts)
+		objects.Namespaces, err = client.Namespaces().List(ctx, opts)
 		return
 	})
 
